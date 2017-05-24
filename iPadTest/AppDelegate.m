@@ -7,7 +7,12 @@
 //
 
 #import "AppDelegate.h"
-
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <Bugly/Bugly.h>
+#import "BaseNavigationController.h"
+#import <AVFoundation/AVFoundation.h>
+#import "GGT_LoginViewController.h"
+#import "GGT_HomeViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,15 +22,46 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = UICOLOR_FROM_HEX(0xcccccc);
-    UIViewController *root = [UIViewController new];
-    self.window.rootViewController = root;
-    [self.window makeKeyAndVisible];
+    [self initRootWindow];
+    [self initIQKeyboardManager];
     return YES;
 }
-
-
+/*
+ 创建跟控制器
+ */
+-(void)initRootWindow{
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = UICOLOR_FROM_HEX(0xcccccc);
+    //创建两个控制器
+    GGT_HomeViewController *homeVc = [GGT_HomeViewController new];
+    GGT_LoginViewController *loginVc = [GGT_LoginViewController new];
+    
+    //用户默认存档
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //判断是否登录
+    if([[userDefaults objectForKey:@"login"] isEqualToString:@"yes"]){
+        self.window.rootViewController = homeVc;
+    }else{
+        BaseNavigationController *mainVc = [[BaseNavigationController alloc] initWithRootViewController:loginVc];
+        self.window.rootViewController = mainVc;
+    }
+    //关闭状态栏
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [self.window makeKeyAndVisible];
+}
+/*
+ 初始化键盘管理
+ */
+-(void)initIQKeyboardManager
+{
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

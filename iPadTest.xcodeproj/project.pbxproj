@@ -16,6 +16,12 @@
 		353D98BE1ED52CA600880566 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98BA1ED52CA600880566 /* BaseNavigationController.m */; };
 		353D98BF1ED52CA600880566 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98BC1ED52CA600880566 /* BaseViewController.m */; };
 		353D98C11ED52D1700880566 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353D98C01ED52D1700880566 /* Reveal.framework */; };
+		353D98C81ED5528C00880566 /* GGT_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98C71ED5528C00880566 /* GGT_LoginViewController.m */; };
+		353D98CF1ED552E000880566 /* GGT_HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98CE1ED552E000880566 /* GGT_HomeViewController.m */; };
+		353D98D61ED55D5800880566 /* BaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98D51ED55D5800880566 /* BaseService.m */; };
+		353D98DA1ED56A2100880566 /* GGT_ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98D91ED56A2100880566 /* GGT_ForgotPasswordViewController.m */; };
+		353D98DD1ED56A3700880566 /* GGT_RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98DC1ED56A3700880566 /* GGT_RegisterViewController.m */; };
+		353D98E01ED56A8300880566 /* GGT_LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D98DF1ED56A8300880566 /* GGT_LoginView.m */; };
 		3551B9651ED52A4200B859DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B9641ED52A4200B859DB /* main.m */; };
 		3551B9681ED52A4200B859DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B9671ED52A4200B859DB /* AppDelegate.m */; };
 		3551B96B1ED52A4200B859DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B96A1ED52A4200B859DB /* ViewController.m */; };
@@ -72,6 +78,19 @@
 		353D98BB1ED52CA600880566 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		353D98BC1ED52CA600880566 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		353D98C01ED52D1700880566 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		353D98C61ED5528C00880566 /* GGT_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_LoginViewController.h; sourceTree = "<group>"; };
+		353D98C71ED5528C00880566 /* GGT_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_LoginViewController.m; sourceTree = "<group>"; };
+		353D98CD1ED552E000880566 /* GGT_HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_HomeViewController.h; sourceTree = "<group>"; };
+		353D98CE1ED552E000880566 /* GGT_HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_HomeViewController.m; sourceTree = "<group>"; };
+		353D98D41ED55D5800880566 /* BaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseService.h; sourceTree = "<group>"; };
+		353D98D51ED55D5800880566 /* BaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseService.m; sourceTree = "<group>"; };
+		353D98D71ED55D7A00880566 /* GGT_Request_URL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGT_Request_URL.h; sourceTree = "<group>"; };
+		353D98D81ED56A2100880566 /* GGT_ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		353D98D91ED56A2100880566 /* GGT_ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		353D98DB1ED56A3700880566 /* GGT_RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_RegisterViewController.h; sourceTree = "<group>"; };
+		353D98DC1ED56A3700880566 /* GGT_RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_RegisterViewController.m; sourceTree = "<group>"; };
+		353D98DE1ED56A8300880566 /* GGT_LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_LoginView.h; sourceTree = "<group>"; };
+		353D98DF1ED56A8300880566 /* GGT_LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_LoginView.m; sourceTree = "<group>"; };
 		3551B9601ED52A4200B859DB /* iPadTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPadTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3551B9641ED52A4200B859DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3551B9661ED52A4200B859DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -174,6 +193,112 @@
 			path = " BaseClass";
 			sourceTree = "<group>";
 		};
+		353D98C21ED5523B00880566 /* LogAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				353D98C31ED5523B00880566 /* Controller */,
+				353D98C41ED5523B00880566 /* Model */,
+				353D98C51ED5523B00880566 /* View */,
+			);
+			path = LogAndRegister;
+			sourceTree = "<group>";
+		};
+		353D98C31ED5523B00880566 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				353D98C61ED5528C00880566 /* GGT_LoginViewController.h */,
+				353D98C71ED5528C00880566 /* GGT_LoginViewController.m */,
+				353D98D81ED56A2100880566 /* GGT_ForgotPasswordViewController.h */,
+				353D98D91ED56A2100880566 /* GGT_ForgotPasswordViewController.m */,
+				353D98DB1ED56A3700880566 /* GGT_RegisterViewController.h */,
+				353D98DC1ED56A3700880566 /* GGT_RegisterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		353D98C41ED5523B00880566 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		353D98C51ED5523B00880566 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				353D98DE1ED56A8300880566 /* GGT_LoginView.h */,
+				353D98DF1ED56A8300880566 /* GGT_LoginView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		353D98C91ED552C500880566 /* HomeClass */ = {
+			isa = PBXGroup;
+			children = (
+				353D98CA1ED552C500880566 /* Controller */,
+				353D98CB1ED552C500880566 /* Model */,
+				353D98CC1ED552C500880566 /* View */,
+			);
+			path = HomeClass;
+			sourceTree = "<group>";
+		};
+		353D98CA1ED552C500880566 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				353D98CD1ED552E000880566 /* GGT_HomeViewController.h */,
+				353D98CE1ED552E000880566 /* GGT_HomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		353D98CB1ED552C500880566 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		353D98CC1ED552C500880566 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		353D98D01ED55D3000880566 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				353D98D11ED55D3000880566 /* Controller */,
+				353D98D21ED55D3000880566 /* Model */,
+				353D98D31ED55D3000880566 /* View */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		353D98D11ED55D3000880566 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				353D98D41ED55D5800880566 /* BaseService.h */,
+				353D98D51ED55D5800880566 /* BaseService.m */,
+				353D98D71ED55D7A00880566 /* GGT_Request_URL.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		353D98D21ED55D3000880566 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		353D98D31ED55D3000880566 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3551B9571ED52A4200B859DB = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +324,9 @@
 		3551B9621ED52A4200B859DB /* iPadTest */ = {
 			isa = PBXGroup;
 			children = (
+				353D98D01ED55D3000880566 /* Network */,
+				353D98C91ED552C500880566 /* HomeClass */,
+				353D98C21ED5523B00880566 /* LogAndRegister */,
 				353D98B61ED52CA600880566 /*  BaseClass */,
 				353D98A71ED52C7200880566 /* CommonClass */,
 				3551B9991ED52B2C00B859DB /* Extension */,
@@ -356,6 +484,7 @@
 		3551B9581ED52A4200B859DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GGT_;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "何建新";
 				TargetAttributes = {
@@ -488,18 +617,24 @@
 				353D98B41ED52C7200880566 /* XCNormalFooter.m in Sources */,
 				3551B9B41ED52B2C00B859DB /* UIButton+timer.m in Sources */,
 				3551B9BA1ED52B2C00B859DB /* UIView+XCHelper.m in Sources */,
+				353D98DA1ED56A2100880566 /* GGT_ForgotPasswordViewController.m in Sources */,
 				353D98B51ED52C7200880566 /* XCNormalHeader.m in Sources */,
+				353D98CF1ED552E000880566 /* GGT_HomeViewController.m in Sources */,
 				3551B9B51ED52B2C00B859DB /* UIButton+XCHelperBlock.m in Sources */,
 				353D98BD1ED52CA600880566 /* BaseBackViewController.m in Sources */,
+				353D98DD1ED56A3700880566 /* GGT_RegisterViewController.m in Sources */,
 				3551B96B1ED52A4200B859DB /* ViewController.m in Sources */,
 				3551B9B11ED52B2C00B859DB /* NSArray+SafeExtension.m in Sources */,
 				3551B9B01ED52B2C00B859DB /* FLAnimatedImageView+WebCache.m in Sources */,
 				3551B9B81ED52B2C00B859DB /* UIView+Layout.m in Sources */,
 				3551B9681ED52A4200B859DB /* AppDelegate.m in Sources */,
+				353D98E01ED56A8300880566 /* GGT_LoginView.m in Sources */,
 				3551B9651ED52A4200B859DB /* main.m in Sources */,
 				353D98B11ED52C7200880566 /* GGT_Singleton.m in Sources */,
+				353D98D61ED55D5800880566 /* BaseService.m in Sources */,
 				353D98BF1ED52CA600880566 /* BaseViewController.m in Sources */,
 				3551B9B31ED52B2C00B859DB /* UIAlertController+Color.m in Sources */,
+				353D98C81ED5528C00880566 /* GGT_LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
