@@ -19,7 +19,8 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "Masonry.h"
-#import <MJRefresh.h>
+#import <MJRefresh/MJRefresh.h>
+//#import "MJRefresh.h"
 #import "NSObject+YYModel.h"
 #import "MBProgressHUD+Extension.h"
 #import "UIImageView+WebCache.h"

@@ -1,29 +1,18 @@
-#source 'https://github.com/CocoaPods/Specs.git'
-#source 'https://github.com/baijia/specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/baijia/specs.git'
 
-platform :ios, '8.0'
+platform :ios, '10.3'
 target 'iPadTest' do
 
 
-#pod 'BJLiveCore'
+pod 'BJLiveCore'
 pod 'Masonry'
-#pod 'M9Dev'
+pod 'M9Dev'
 pod 'MJRefresh'
 pod 'MJExtension'
 pod 'MBProgressHUD'
 pod 'JPush'
-#pod 'FLEX', '~> 2.0', :configurations => ['Debug']
-
-use_frameworks!
-pod 'ReactiveCocoa', '~> 2.5.0'             # 必须加上上面的use_frameworks!
-
-pod 'AFNetworking'
-pod 'FMDB'
-pod 'Reachability'
-pod 'SDWebImage'
-pod 'YYModel'
-
-
+pod 'FLEX', '~> 2.0', :configurations => ['Debug']
 pod 'Bugly'
 pod 'IQKeyboardManager'
 pod 'FSCalendar'

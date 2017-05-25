@@ -41,7 +41,7 @@
 		3551B9B81ED52B2C00B859DB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B9AB1ED52B2C00B859DB /* UIView+Layout.m */; };
 		3551B9B91ED52B2C00B859DB /* UIView+XCCornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B9AD1ED52B2C00B859DB /* UIView+XCCornerRadius.m */; };
 		3551B9BA1ED52B2C00B859DB /* UIView+XCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B9AF1ED52B2C00B859DB /* UIView+XCHelper.m */; };
-		5BF42F0AA7983997AC569E54 /* libPods-iPadTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF6A08C9284DF80B07DF06E /* libPods-iPadTest.a */; };
+		71497A6FC5639B6D0EADBD1F /* Pods_iPadTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634B8245A26090102F2E9D1B /* Pods_iPadTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,8 +133,8 @@
 		3551B9AE1ED52B2C00B859DB /* UIView+XCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XCHelper.h"; sourceTree = "<group>"; };
 		3551B9AF1ED52B2C00B859DB /* UIView+XCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XCHelper.m"; sourceTree = "<group>"; };
 		48350ABF8FD3C5CF29D10E75 /* Pods-iPadTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPadTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPadTest/Pods-iPadTest.debug.xcconfig"; sourceTree = "<group>"; };
+		634B8245A26090102F2E9D1B /* Pods_iPadTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPadTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F86952D725597B4B6EBC801 /* Pods-iPadTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPadTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPadTest/Pods-iPadTest.release.xcconfig"; sourceTree = "<group>"; };
-		DAF6A08C9284DF80B07DF06E /* libPods-iPadTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPadTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BF42F0AA7983997AC569E54 /* libPods-iPadTest.a in Frameworks */,
 				353D98C11ED52D1700880566 /* Reveal.framework in Frameworks */,
+				71497A6FC5639B6D0EADBD1F /* Pods_iPadTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				353D98C01ED52D1700880566 /* Reveal.framework */,
-				DAF6A08C9284DF80B07DF06E /* libPods-iPadTest.a */,
+				634B8245A26090102F2E9D1B /* Pods_iPadTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -795,96 +795,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iPadTest/PrefixHeader.pch";
 				INFOPLIST_FILE = iPadTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"BJHL-Foundation-iOS\"",
-					"-l\"BJHL-Websocket-iOS\"",
-					"-l\"BJLiveCore\"",
-					"-l\"CocoaLumberjack\"",
-					"-l\"FLAnimatedImage\"",
-					"-l\"FLEX\"",
-					"-l\"FMDB\"",
-					"-l\"FSCalendar\"",
-					"-l\"IQKeyboardManager\"",
-					"-l\"JRSwizzle\"",
-					"-l\"LKDBHelper\"",
-					"-l\"LTInfiniteScrollView\"",
-					"-l\"M9Dev\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"MJExtension\"",
-					"-l\"MJRefresh\"",
-					"-l\"Masonry\"",
-					"-l\"NSString-UrlEncode\"",
-					"-l\"PocketSocket\"",
-					"-l\"Reachability\"",
-					"-l\"ReactiveCocoa\"",
-					"-l\"SDWebImage\"",
-					"-l\"SocialQQ\"",
-					"-l\"SocialSina\"",
-					"-l\"SocialUniqueId\"",
-					"-l\"SocialWeChat\"",
-					"-l\"UMSocialLog\"",
-					"-l\"YYModel\"",
-					"-l\"ZFPlayer\"",
-					"-l\"c++\"",
-					"-l\"icucore\"",
-					"-l\"jcore-ios-1.1.3\"",
-					"-l\"jpush-ios-3.0.5\"",
-					"-l\"libextobjc\"",
-					"-l\"mediaplayer\"",
-					"-l\"resolv\"",
-					"-l\"sqlite3\"",
-					"-l\"stdc++\"",
-					"-l\"stdc++.6\"",
-					"-l\"system\"",
-					"-l\"z\"",
-					"-framework",
-					"\"Accelerate\"",
-					"-framework",
-					"\"Bugly\"",
-					"-framework",
-					"\"CFNetwork\"",
-					"-framework",
-					"\"CoreFoundation\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreTelephony\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"GLKit\"",
-					"-framework",
-					"\"ImageIO\"",
-					"-framework",
-					"\"LogStat\"",
-					"-framework",
-					"\"MediaPlayer\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
-					"-framework",
-					"\"UMSocialCore\"",
-					"-framework",
-					"\"UMSocialNetwork\"",
-					"-framework",
-					"\"UShareUI\"",
-					"-framework",
-					"\"VideoToolbox\"",
-					"-weak_framework",
-					"\"UserNotifications\"",
-					"-framework",
-					Reveal,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hejianxin.iPadTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -904,6 +815,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iPadTest/PrefixHeader.pch";
 				INFOPLIST_FILE = iPadTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hejianxin.iPadTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
