@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GGT_LoginView : UIView
+@interface GGT_LoginView : UIView <UITextFieldDelegate>
 //手机号码边框
 @property(nonatomic, weak) UIView *phoneView;
 //手机号码icon
@@ -26,4 +26,10 @@
 @property(nonatomic, strong) UIView *passwordLine;
 //密码TextField
 @property(nonatomic, strong) UITextField *passwordTextField;
+//忘记密码Button
+@property(nonatomic, strong) UIButton *forgetPwd;
+//登录按钮
+@property(nonatomic, strong) UIButton *loginButton;
+//注册按钮
+@property(nonatomic, strong) UIButton *registerButton;
 @end
