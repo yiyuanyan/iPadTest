@@ -42,6 +42,7 @@
 		3551B9B91ED52B2C00B859DB /* UIView+XCCornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B9AD1ED52B2C00B859DB /* UIView+XCCornerRadius.m */; };
 		3551B9BA1ED52B2C00B859DB /* UIView+XCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3551B9AF1ED52B2C00B859DB /* UIView+XCHelper.m */; };
 		71497A6FC5639B6D0EADBD1F /* Pods_iPadTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634B8245A26090102F2E9D1B /* Pods_iPadTest.framework */; };
+		B7BE6EF71ED81843000C10B3 /* GGT_RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE6EF61ED81843000C10B3 /* GGT_RegisterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,8 @@
 		48350ABF8FD3C5CF29D10E75 /* Pods-iPadTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPadTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPadTest/Pods-iPadTest.debug.xcconfig"; sourceTree = "<group>"; };
 		634B8245A26090102F2E9D1B /* Pods_iPadTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPadTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F86952D725597B4B6EBC801 /* Pods-iPadTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPadTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPadTest/Pods-iPadTest.release.xcconfig"; sourceTree = "<group>"; };
+		B7BE6EF51ED81843000C10B3 /* GGT_RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_RegisterView.h; sourceTree = "<group>"; };
+		B7BE6EF61ED81843000C10B3 /* GGT_RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_RegisterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +231,8 @@
 			children = (
 				353D98DE1ED56A8300880566 /* GGT_LoginView.h */,
 				353D98DF1ED56A8300880566 /* GGT_LoginView.m */,
+				B7BE6EF51ED81843000C10B3 /* GGT_RegisterView.h */,
+				B7BE6EF61ED81843000C10B3 /* GGT_RegisterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 			files = (
 				3551B9B61ED52B2C00B859DB /* UIColor+XCAdditions.m in Sources */,
 				353D98B21ED52C7200880566 /* MBProgressHUD+Extension.m in Sources */,
+				B7BE6EF71ED81843000C10B3 /* GGT_RegisterView.m in Sources */,
 				3551B9B21ED52B2C00B859DB /* NSString+XCHelper.m in Sources */,
 				3551B9B91ED52B2C00B859DB /* UIView+XCCornerRadius.m in Sources */,
 				353D98BE1ED52CA600880566 /* BaseNavigationController.m in Sources */,

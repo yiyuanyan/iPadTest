@@ -245,6 +245,12 @@ static inline UIImage *UIIMAGE_FROM_PATH_AND_TYPE(NSString *path,NSString *type)
 {
     return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:path ofType:type]];
 }
-
+/**
+ @abstract NSUserDefaults宏定义.
+ **/
+static inline NSUserDefaults *UserDefaults()
+{
+    return [NSUserDefaults standardUserDefaults];
+}
 
 #endif /* AppInformation_h */

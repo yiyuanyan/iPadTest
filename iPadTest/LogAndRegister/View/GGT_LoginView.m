@@ -81,6 +81,7 @@
     [phoneView addSubview:phoneTextField];
     self.phoneTextField = phoneTextField;
     self.phoneTextField.delegate = self;
+    [self.phoneTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [phoneTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(phoneLine.mas_right).with.offset(15);
         make.top.equalTo(phoneView.mas_top).with.offset(0);
@@ -129,6 +130,7 @@
     self.passwordTextField.placeholder = @"请输入密码";
     self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.delegate = self;
+    [self.passwordTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.passwordView addSubview:self.passwordTextField];
     [self.passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.phoneTextField.mas_left);
@@ -208,5 +210,18 @@
     self.passwordTextField.tintColor = UICOLOR_FROM_HEX(ColorD5D5D5);
     self.passwordLine.backgroundColor = UICOLOR_FROM_HEX(ColorD5D5D5);
     self.passwordIcon.image = UIIMAGE_FROM_NAME(@"Password_not");
+}
+//判断输入框内容长度
+-(void)textFieldDidChange:(UITextField *)textField
+{
+    if(textField == self.phoneTextField){
+        if(textField.text.length > 11){
+            textField.text = [textField.text substringToIndex:11];
+        }
+    }else{
+        if(textField.text.length > 12){
+            textField.text = [textField.text substringToIndex:12];
+        }
+    }
 }
 @end
