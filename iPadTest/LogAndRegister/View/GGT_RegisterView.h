@@ -25,7 +25,7 @@
 //pwdIcon
 @property(nonatomic, strong) UIImageView *passwordIcon;
 //pwdLine
-@property(nonatomic, strong) UIView *passwordLind;
+@property(nonatomic, strong) UIView *passwordLine;
 //pwdTextField
 @property(nonatomic, strong) UITextField *passwordTextField;
 
