@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [self setNewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,14 +39,12 @@
     self.leftView = [[GGT_HomeLeftView alloc]initWithFrame:CGRectMake(0, 0, LineW(home_leftView_width), SCREEN_HEIGHT())];
     [self.view addSubview:self.leftView];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setNewController
+{
+    self.mineSplitVc = [[GGT_MineSplitViewController alloc] init];
+    [self.mineSplitVc.view setFrame:CGRectMake(self.leftView.width, 0, SCREEN_WIDTH()-self.leftView.width, SCREEN_HEIGHT())];
+    [self.view addSubview:self.mineSplitVc.view];
+    self.currentVc = self.mineSplitVc;
 }
-*/
 
 @end
