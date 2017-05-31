@@ -1,9 +1,9 @@
 //
 //  BaseService.h
-//  iPadTest
+//  GoGoTalkHD
 //
-//  Created by 何建新 on 2017/5/24.
-//  Copyright © 2017年 何建新. All rights reserved.
+//  Created by 辰 on 16/7/29.
+//  Copyright © 2016年 Chn. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -49,6 +49,7 @@ typedef NS_ENUM(NSInteger, HttpRequestType) {
 
 #pragma mark - GET
 - (void)sendGetRequestWithPath:(NSString *)url
+                         token:(BOOL)isLoadToken
                 viewController:(UIViewController *)viewController
                        success:(AFNSuccessResponse)success
                        failure:(AFNFailureResponse)failure;

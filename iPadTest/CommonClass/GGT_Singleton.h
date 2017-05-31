@@ -18,5 +18,6 @@
 //isComplete
 @property (nonatomic, copy) NSString *isCompleteStr;
 
-
+//网络状态
+@property (nonatomic) BOOL netStatus;
 @end

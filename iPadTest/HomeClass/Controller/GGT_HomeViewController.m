@@ -34,10 +34,51 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)replaceController:(UIViewController *)oldController newController:(UIViewController *)newController
+{
+    [self addChildViewController:newController];
+    [self transitionFromViewController:oldController toViewController:newController duration:0.3f options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {
+        if(finished){
+            [newController didMoveToParentViewController:self];
+            [oldController willMoveToParentViewController:nil];
+            [oldController removeFromParentViewController];
+            self.currentVc = newController;
+        }else{
+            self.currentVc = oldController;
+        }
+    }];
+}
 -(void)initView{
+    @weakify(self);
     self.leftView = [[GGT_HomeLeftView alloc] init];
     self.leftView = [[GGT_HomeLeftView alloc]initWithFrame:CGRectMake(0, 0, LineW(home_leftView_width), SCREEN_HEIGHT())];
     [self.view addSubview:self.leftView];
+    self.leftView.buttonClickBlock = ^(UIButton *button) {
+        @strongify(self);
+        switch (button.tag) {
+            case 100:
+                return;
+//            {
+//                if(self.currentVc == self.nav){
+//                    return;
+//                }else{
+//                    [self replaceController:self.currentVc newController:self.nav];
+//                }
+//            }
+                break;
+            case 101:
+            {
+                if(self.currentVc == self.mineSplitVc){
+                    return;
+                }else{
+                    [self replaceController:self.currentVc newController:self.mineSplitVc];
+                }
+            }
+                break;
+            default:
+                break;
+        }
+    };
 }
 -(void)setNewController
 {

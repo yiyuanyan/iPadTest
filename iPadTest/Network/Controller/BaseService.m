@@ -1,17 +1,12 @@
 //
 //  BaseService.m
-//  iPadTest
+//  GoGoTalkHD
 //
-//  Created by 何建新 on 2017/5/24.
-//  Copyright © 2017年 何建新. All rights reserved.
+//  Created by 辰 on 16/7/29.
+//  Copyright © 2016年 Chn. All rights reserved.
 //
 
 #import "BaseService.h"
-
-static NSString * const xc_returnCode = @"result";
-static NSString * const xc_returnMsg = @"msg";
-static NSString * const xc_message = @"message";
-static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
 
 @interface BaseService()
 
@@ -35,6 +30,9 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
 {
     if (self = [super init]) {
         
+        GGT_Singleton *singleton = [GGT_Singleton sharedSingleton];
+        
+        
         // 1. 获得网络监控管理者
         AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
         
@@ -44,6 +42,7 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
             switch (status) {
                 case AFNetworkReachabilityStatusUnknown: // 未知网络
                     self.netWorkStaus = AFNetworkReachabilityStatusUnknown;
+                    singleton.netStatus = NO;
 #ifdef DEBUG
                     [self showExceptionDialog:@"未知网络"];
 #endif
@@ -51,6 +50,8 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                     
                 case AFNetworkReachabilityStatusNotReachable: // 没有网络(断网)
                     self.netWorkStaus = AFNetworkReachabilityStatusNotReachable;
+                    singleton.netStatus = NO;
+
 #ifdef DEBUG
                     [self showExceptionDialog:@"没有网络(断网)"];
 #endif
@@ -58,6 +59,8 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                     
                 case AFNetworkReachabilityStatusReachableViaWWAN: // 手机自带网络
                     self.netWorkStaus = AFNetworkReachabilityStatusReachableViaWWAN;
+                    singleton.netStatus = YES;
+
 #ifdef DEBUG
                     [self showExceptionDialog:@"手机自带网络"];
 #endif
@@ -65,6 +68,8 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                     
                 case AFNetworkReachabilityStatusReachableViaWiFi: // WIFI
                     self.netWorkStaus = AFNetworkReachabilityStatusReachableViaWiFi;
+                    singleton.netStatus = YES;
+
 #ifdef DEBUG
                     [self showExceptionDialog:@"WIFI"];
 #endif
@@ -90,10 +95,10 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                 failure:(AFNFailureResponse)failure
 {
     self.manager = [AFHTTPSessionManager manager];
-    
+
     urlStr = [BASE_REQUEST_URL stringByAppendingPathComponent:urlStr];
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+//    NSLog(@"打印token----%@",[UserDefaults() objectForKey:@"userToken"]);
     [MBProgressHUD hideHUDForView:viewController.view];
     [MBProgressHUD showLoading:viewController.view];
     
@@ -101,24 +106,31 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
         case XCHttpRequestGet:
         {
             //            self.manager = [AFHTTPSessionManager manager];
-            //                        self.manager.requestSerializer.timeoutInterval = 5;
+//                        self.manager.requestSerializer.timeoutInterval = 5;
             
             self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"application/json", @"charset=utf-8", nil];
+
             
-            //            self.manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
-            //            self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-            
+            if (isLoadToken == YES) {
+                //可不写，但是不能写在判断外，否则会出错
+                //self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+                //在设置header头
+                [self.manager.requestSerializer setValue:[UserDefaults() objectForKey:@"userToken"] forHTTPHeaderField:@"Authorization"];
+                
+//                [self.manager.requestSerializer setValue:@"86fd2890-7d67-4b7e-938d-d6f31054ae81" forHTTPHeaderField:@"Authorization"];
+            }
+
             
             [self.manager GET:urlStr parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 [MBProgressHUD hideHUDForView:viewController.view];
-                
+
                 NSDictionary *dic = responseObject;
                 if ([[dic objectForKey:xc_returnCode]integerValue] == 1)
                 {
                     success(responseObject);
-                    NSLog(@"打印XCHttpRequestGet请求地址:\n%@---打印success日志:\n%@",urlStr,responseObject);
-                    
+                    NSLog(@"%@-Get请求地址:\n%@---success日志:\n%@",[viewController class],urlStr,responseObject);
+
                 }
                 else {
                     NSError *error;
@@ -128,19 +140,19 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                         error = [[NSError alloc]initWithDomain:@"com.gogo-talk.GoGoTalk" code:1002 userInfo:@{xc_message:xc_alert_message}];
                     }
                     failure(error);
-                    NSLog(@"打印XCHttpRequestGet请求地址:\n%@---打印success日志:\n%@",urlStr,error);
-                    
+                    NSLog(@"%@-Get请求地址:\n%@---success日志:\n%@",[viewController class],urlStr,error);
+
                     NSDictionary *userInfoDic = error.userInfo;
                     [MBProgressHUD showMessage:userInfoDic[xc_message] toView:viewController.view];
-                    
+
                 }
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [MBProgressHUD hideHUDForView:viewController.view];
                 failure(error);
                 
-                NSLog(@"打印XCHttpRequestGet请求地址:\n%@---打印error日志:\n%@",urlStr,error);
-                
+                NSLog(@"%@-Get请求地址:\n%@---error日志:\n%@",[viewController class],urlStr,error);
+
 #ifdef DEBUG
                 NSError *newError = [[NSError alloc]initWithDomain:@"com.gogo-talk.GoGoTalk" code:1002 userInfo:@{xc_message:xc_alert_message}];
                 NSDictionary *userInfoDic = newError.userInfo;
@@ -150,36 +162,33 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                 NSDictionary *userInfoDic = newError.userInfo;
                 [MBProgressHUD showMessage:userInfoDic[xc_message] toView:viewController.view];
 #endif
-                
+ 
             }];
         }
             break;
         case XCHttpRequestPost:
         {
-            // 增加请求的head
-            if (isLoadToken == YES) {
-                //                NSString * userTokenStr = [AppHelper readObjectFromUserDefaultsWithKey:userToken];
-                //                NSMutableDictionary * moDict = [NSMutableDictionary dictionary];
-                //                [moDict setValue:userTokenStr forKey:userToken];
-                //                NSString * moString = [NSString jsonStringWithDictionary:moDict];
-                //                [mgr.requestSerializer setValue:moString forHTTPHeaderField:@"mobilehead"];
-            }
             
             self.manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
             
+            if (isLoadToken == YES) {
+                //在设置header头
+                [self.manager.requestSerializer setValue:[UserDefaults() objectForKey:@"userToken"] forHTTPHeaderField:@"Authorization"];
+            }
+
             [self.manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 [MBProgressHUD hideHUDForView:viewController.view];
-                
+
                 
                 NSDictionary *dic = responseObject;
                 if ([[dic objectForKey:xc_returnCode]integerValue] == 1)
                 {
                     success(responseObject);
-                    NSLog(@"打印XCHttpRequestPost请求地址:\n%@---打印success日志:\n%@",urlStr,responseObject);
-                    
+                    NSLog(@"%@-Post请求地址:\n%@---success日志:\n%@",[viewController class],urlStr,responseObject);
+
                 }
                 else {
                     NSError *error;
@@ -190,8 +199,8 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                     }
                     
                     failure(error);
-                    NSLog(@"打印XCHttpRequestPost请求地址:\n%@---打印success日志:\n%@",urlStr,error);
-                    
+                    NSLog(@"%@-Post请求地址:\n%@---success日志:\n%@",[viewController class],urlStr,error);
+
                     NSDictionary *userInfoDic = error.userInfo;
                     [MBProgressHUD showMessage:userInfoDic[xc_message] toView:viewController.view];
                 }
@@ -201,8 +210,8 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                 [MBProgressHUD hideHUDForView:viewController.view];
                 
                 failure(error);
-                NSLog(@"打印XCHttpRequestPost请求地址:\n%@---打印error日志:\n%@",urlStr,error);
-                
+                NSLog(@"%@-Post请求地址:\n%@---error日志:\n%@",[viewController class],urlStr,error);
+
                 
 #ifdef DEBUG
                 NSError *newError = [[NSError alloc]initWithDomain:@"com.gogo-talk.GoGoTalk" code:1002 userInfo:@{xc_message:xc_alert_message}];
@@ -213,7 +222,7 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
                 NSDictionary *userInfoDic = newError.userInfo;
                 [MBProgressHUD showMessage:userInfoDic[xc_message] toView:viewController.view];
 #endif
-                
+ 
             }];
         }
             break;
@@ -273,11 +282,12 @@ static NSString * const xc_alert_message = @"网络不给力，请稍后再试";
 }
 
 - (void)sendGetRequestWithPath:(NSString *)url
+                         token:(BOOL)isLoadToken
                 viewController:(UIViewController *)viewController
                        success:(AFNSuccessResponse)success
                        failure:(AFNFailureResponse)failure
 {
-    [self requestWithPath:url method:XCHttpRequestGet parameters:nil token:nil viewController:viewController success:success failure:failure];
+    [self requestWithPath:url method:XCHttpRequestGet parameters:nil token:isLoadToken viewController:viewController success:success failure:failure];
 }
 
 

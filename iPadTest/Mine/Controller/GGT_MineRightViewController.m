@@ -1,30 +1,23 @@
 //
-//  GGT_MineSplitViewController.m
+//  GGT_MineRightViewController.m
 //  iPadTest
 //
-//  Created by Talk GoGo on 2017/5/27.
+//  Created by 何建新 on 2017/5/31.
 //  Copyright © 2017年 何建新. All rights reserved.
 //
 
-#import "GGT_MineSplitViewController.h"
-#import "GGT_MineLeftViewController.h"
 #import "GGT_MineRightViewController.h"
-#import "BaseViewController.h"
-@interface GGT_MineSplitViewController ()<UISplitViewControllerDelegate>
+
+@interface GGT_MineRightViewController ()
 
 @end
 
-@implementation GGT_MineSplitViewController
+@implementation GGT_MineRightViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    GGT_MineLeftViewController *leftVc = [[GGT_MineLeftViewController alloc] init];
-    GGT_MineRightViewController *rightVc = [[GGT_MineRightViewController alloc] init];
-    BaseNavigationController *detailNav = [[BaseNavigationController alloc] initWithRootViewController:rightVc];
-    self.viewControllers = @[leftVc,detailNav];
-    self.delegate = self;
+    self.view.backgroundColor = UICOLOR_RANDOM_COLOR();
 }
 
 - (void)didReceiveMemoryWarning {
