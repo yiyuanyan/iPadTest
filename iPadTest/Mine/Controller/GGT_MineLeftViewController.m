@@ -44,6 +44,7 @@
     [[BaseService share] sendGetRequestWithPath:URL_GetLessonStatistics token:YES viewController:self success:^(id responseObject) {
         if([responseObject[@"result"] isEqual:@1]){
             _model = [GGT_MineLeftMode yy_modelWithDictionary:responseObject[@"data"]];
+            //数据传递给模型
             [_headerView getResultModel:_model];
         }
     } failure:^(NSError *error) {

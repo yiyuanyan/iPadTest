@@ -55,6 +55,7 @@
 		B7B6F74A1ED95DB8006FCB44 /* GGT_HomeLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F7491ED95DB8006FCB44 /* GGT_HomeLeftView.m */; };
 		B7B6F7511ED96AF9006FCB44 /* GGT_MineSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F7501ED96AF9006FCB44 /* GGT_MineSplitViewController.m */; };
 		B7BE6EF71ED81843000C10B3 /* GGT_RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE6EF61ED81843000C10B3 /* GGT_RegisterView.m */; };
+		B7E69E061EDFB6F400410F9A /* GGT_SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E69E051EDFB6F400410F9A /* GGT_SettingTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,8 @@
 		B7B6F7501ED96AF9006FCB44 /* GGT_MineSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_MineSplitViewController.m; sourceTree = "<group>"; };
 		B7BE6EF51ED81843000C10B3 /* GGT_RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_RegisterView.h; sourceTree = "<group>"; };
 		B7BE6EF61ED81843000C10B3 /* GGT_RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_RegisterView.m; sourceTree = "<group>"; };
+		B7E69E041EDFB6F400410F9A /* GGT_SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_SettingTableViewCell.h; sourceTree = "<group>"; };
+		B7E69E051EDFB6F400410F9A /* GGT_SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_SettingTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +506,8 @@
 				35595B8F1EDE7027000E2514 /* GGT_MineHeaderView.m */,
 				35595B911EDE704A000E2514 /* GGT_MineLeftTableViewCell.h */,
 				35595B921EDE704A000E2514 /* GGT_MineLeftTableViewCell.m */,
+				B7E69E041EDFB6F400410F9A /* GGT_SettingTableViewCell.h */,
+				B7E69E051EDFB6F400410F9A /* GGT_SettingTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -722,6 +727,7 @@
 				3551B9BA1ED52B2C00B859DB /* UIView+XCHelper.m in Sources */,
 				35595B8D1EDE6FA0000E2514 /* GGT_SettingViewController.m in Sources */,
 				353D98DA1ED56A2100880566 /* GGT_ForgotPasswordViewController.m in Sources */,
+				B7E69E061EDFB6F400410F9A /* GGT_SettingTableViewCell.m in Sources */,
 				353D98B51ED52C7200880566 /* XCNormalHeader.m in Sources */,
 				353D98CF1ED552E000880566 /* GGT_HomeViewController.m in Sources */,
 				3551B9B51ED52B2C00B859DB /* UIButton+XCHelperBlock.m in Sources */,
