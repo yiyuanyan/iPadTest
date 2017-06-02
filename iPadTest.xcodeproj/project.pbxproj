@@ -51,6 +51,8 @@
 		35595B901EDE7027000E2514 /* GGT_MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35595B8F1EDE7027000E2514 /* GGT_MineHeaderView.m */; };
 		35595B931EDE704A000E2514 /* GGT_MineLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35595B921EDE704A000E2514 /* GGT_MineLeftTableViewCell.m */; };
 		35595B961EDE707B000E2514 /* GGT_MineLeftMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 35595B951EDE707B000E2514 /* GGT_MineLeftMode.m */; };
+		3568D2CE1EE1185D00AFC2DE /* GGT_SelfInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3568D2CD1EE1185D00AFC2DE /* GGT_SelfInfoTableViewCell.m */; };
+		3568D2D11EE14A2E00AFC2DE /* GGT_selfInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3568D2D01EE14A2E00AFC2DE /* GGT_selfInfoModel.m */; };
 		71497A6FC5639B6D0EADBD1F /* Pods_iPadTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634B8245A26090102F2E9D1B /* Pods_iPadTest.framework */; };
 		B7B6F74A1ED95DB8006FCB44 /* GGT_HomeLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F7491ED95DB8006FCB44 /* GGT_HomeLeftView.m */; };
 		B7B6F7511ED96AF9006FCB44 /* GGT_MineSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F7501ED96AF9006FCB44 /* GGT_MineSplitViewController.m */; };
@@ -166,6 +168,10 @@
 		35595B921EDE704A000E2514 /* GGT_MineLeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGT_MineLeftTableViewCell.m; path = iPadTest/Mine/Controller/GGT_MineLeftTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		35595B941EDE707B000E2514 /* GGT_MineLeftMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GGT_MineLeftMode.h; path = iPadTest/Mine/Controller/GGT_MineLeftMode.h; sourceTree = SOURCE_ROOT; };
 		35595B951EDE707B000E2514 /* GGT_MineLeftMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGT_MineLeftMode.m; path = iPadTest/Mine/Controller/GGT_MineLeftMode.m; sourceTree = SOURCE_ROOT; };
+		3568D2CC1EE1185D00AFC2DE /* GGT_SelfInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGT_SelfInfoTableViewCell.h; sourceTree = "<group>"; };
+		3568D2CD1EE1185D00AFC2DE /* GGT_SelfInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGT_SelfInfoTableViewCell.m; sourceTree = "<group>"; };
+		3568D2CF1EE14A2E00AFC2DE /* GGT_selfInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GGT_selfInfoModel.h; path = iPadTest/Mine/View/GGT_selfInfoModel.h; sourceTree = SOURCE_ROOT; };
+		3568D2D01EE14A2E00AFC2DE /* GGT_selfInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGT_selfInfoModel.m; path = iPadTest/Mine/View/GGT_selfInfoModel.m; sourceTree = SOURCE_ROOT; };
 		48350ABF8FD3C5CF29D10E75 /* Pods-iPadTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPadTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPadTest/Pods-iPadTest.debug.xcconfig"; sourceTree = "<group>"; };
 		634B8245A26090102F2E9D1B /* Pods_iPadTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPadTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F86952D725597B4B6EBC801 /* Pods-iPadTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPadTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPadTest/Pods-iPadTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -495,6 +501,8 @@
 			children = (
 				35595B941EDE707B000E2514 /* GGT_MineLeftMode.h */,
 				35595B951EDE707B000E2514 /* GGT_MineLeftMode.m */,
+				3568D2CF1EE14A2E00AFC2DE /* GGT_selfInfoModel.h */,
+				3568D2D01EE14A2E00AFC2DE /* GGT_selfInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -508,6 +516,8 @@
 				35595B921EDE704A000E2514 /* GGT_MineLeftTableViewCell.m */,
 				B7E69E041EDFB6F400410F9A /* GGT_SettingTableViewCell.h */,
 				B7E69E051EDFB6F400410F9A /* GGT_SettingTableViewCell.m */,
+				3568D2CC1EE1185D00AFC2DE /* GGT_SelfInfoTableViewCell.h */,
+				3568D2CD1EE1185D00AFC2DE /* GGT_SelfInfoTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -726,6 +736,7 @@
 				3551B9B41ED52B2C00B859DB /* UIButton+timer.m in Sources */,
 				3551B9BA1ED52B2C00B859DB /* UIView+XCHelper.m in Sources */,
 				35595B8D1EDE6FA0000E2514 /* GGT_SettingViewController.m in Sources */,
+				3568D2CE1EE1185D00AFC2DE /* GGT_SelfInfoTableViewCell.m in Sources */,
 				353D98DA1ED56A2100880566 /* GGT_ForgotPasswordViewController.m in Sources */,
 				B7E69E061EDFB6F400410F9A /* GGT_SettingTableViewCell.m in Sources */,
 				353D98B51ED52C7200880566 /* XCNormalHeader.m in Sources */,
@@ -734,6 +745,7 @@
 				353D98BD1ED52CA600880566 /* BaseBackViewController.m in Sources */,
 				B7B6F7511ED96AF9006FCB44 /* GGT_MineSplitViewController.m in Sources */,
 				353D98DD1ED56A3700880566 /* GGT_RegisterViewController.m in Sources */,
+				3568D2D11EE14A2E00AFC2DE /* GGT_selfInfoModel.m in Sources */,
 				35595B8A1EDE6F8A000E2514 /* GGT_FeedbackViewController.m in Sources */,
 				3551B96B1ED52A4200B859DB /* ViewController.m in Sources */,
 				3551B9B11ED52B2C00B859DB /* NSArray+SafeExtension.m in Sources */,
