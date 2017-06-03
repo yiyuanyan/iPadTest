@@ -46,6 +46,7 @@
             _model = [GGT_MineLeftMode yy_modelWithDictionary:responseObject[@"data"]];
             //数据传递给模型
             [_headerView getResultModel:_model];
+            [_tableView reloadData];
         }
     } failure:^(NSError *error) {
         
@@ -94,7 +95,7 @@
     cell.backgroundColor = UICOLOR_FROM_HEX(ColorFFFFFF);
     cell.leftTitleLabel.text = _dataArray[indexPath.row];
     if(indexPath.row == 1){
-        cell.leftSubTitleLabel.text = _model.totalCount;
+        cell.leftSubTitleLabel.text = [NSString stringWithFormat:@"剩余课时%@节",_model.totalCount];
     }
     cell.iconName = self.iconArray[indexPath.row];
     if(indexPath.row == 0){

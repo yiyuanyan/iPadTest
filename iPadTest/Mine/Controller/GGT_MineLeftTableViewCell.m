@@ -49,7 +49,7 @@
     [self.leftSubTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
         make.right.equalTo(self.contentView.mas_right).with.offset(-LineX(19));
-        make.size.mas_offset(CGSizeMake(LineW(54), LineH(20)));
+        make.height.mas_equalTo(LineH(20));
     }];
     //分割线
     UIView *lineView = [[UIView alloc] init];
