@@ -8,6 +8,7 @@
 
 #import "GGT_SelfInfoViewController.h"
 #import "GGT_SelfInfoTableViewCell.h"
+#import "GGT_MineLeftTableViewCell.h"
 #import "GGT_selfInfoModel.h"
 @interface GGT_SelfInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
