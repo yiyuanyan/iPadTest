@@ -32,7 +32,8 @@ static NSString * const URL_GetStudentInfo = @"/api/APP/AppGetStudentInfo";
 static NSString * const URL_UpdateStudentInfo = @"/api/APP/AppUpdateStudentInfo";
 //获取课程统计信息
 static NSString * const URL_GetLessonStatistics = @"/api/APP/GetLessonStatistics";
-
+//获取我的课时
+static NSString * const URL_GetMyClassHour = @"/api/APP/GetMyClassHour";
 
 
 
