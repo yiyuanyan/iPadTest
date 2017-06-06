@@ -11,13 +11,16 @@
 @interface GGT_Singleton : NSObject
 
 + (GGT_Singleton *)sharedSingleton;
-
-//userTokenStr
+//userToken
 @property (nonatomic, copy) NSString *userTokenStr;
 
 //isComplete
 @property (nonatomic, copy) NSString *isCompleteStr;
 
+//studentName
+@property (nonatomic, copy) NSString *studentNameStr;
+
 //网络状态
 @property (nonatomic) BOOL netStatus;
+
 @end

@@ -8,6 +8,10 @@
 
 #import "BaseService.h"
 
+// 自定义的code
+static NSInteger const kErrorCode_1001 = 1001;
+static NSInteger const kErrorCode_1002 = 1002;
+
 @interface BaseService()
 
 @end
@@ -94,30 +98,26 @@
                 success:(AFNSuccessResponse)success
                 failure:(AFNFailureResponse)failure
 {
+    
     self.manager = [AFHTTPSessionManager manager];
 
     urlStr = [BASE_REQUEST_URL stringByAppendingPathComponent:urlStr];
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    NSLog(@"打印token----%@",[UserDefaults() objectForKey:@"userToken"]);
+    NSLog(@"打印token----%@",[UserDefaults() objectForKey:K_userToken]);
     [MBProgressHUD hideHUDForView:viewController.view];
     [MBProgressHUD showLoading:viewController.view];
     
     switch (method) {
         case XCHttpRequestGet:
         {
-            //            self.manager = [AFHTTPSessionManager manager];
-//                        self.manager.requestSerializer.timeoutInterval = 5;
-            
+
             self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"application/json", @"charset=utf-8", nil];
 
-            
             if (isLoadToken == YES) {
                 //可不写，但是不能写在判断外，否则会出错
                 //self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
                 //在设置header头
-                [self.manager.requestSerializer setValue:[UserDefaults() objectForKey:@"userToken"] forHTTPHeaderField:@"Authorization"];
-                
-//                [self.manager.requestSerializer setValue:@"86fd2890-7d67-4b7e-938d-d6f31054ae81" forHTTPHeaderField:@"Authorization"];
+                [self.manager.requestSerializer setValue:[UserDefaults() objectForKey:K_userToken] forHTTPHeaderField:@"Authorization"];
             }
 
             
@@ -131,8 +131,13 @@
                     success(responseObject);
                     NSLog(@"%@-Get请求地址:\n%@---success日志:\n%@",[viewController class],urlStr,responseObject);
 
-                }
-                else {
+                } else if ([[dic objectForKey:xc_returnCode]integerValue] == 1000) {
+                    NSLog(@"%@-Get请求地址:\n%@---登陆过期日志:\n%@",[viewController class],urlStr,responseObject);
+
+                    [self refreshToken:urlStr method:method parameters:nil token:isLoadToken viewController:viewController success:success failure:failure];
+
+
+                } else {
                     NSError *error;
                     if ([dic objectForKey:xc_returnMsg] && [dic objectForKey:xc_returnCode]) {
                         error = [[NSError alloc]initWithDomain:@"com.gogo-talk.GoGoTalk" code:1001 userInfo:@{xc_message:[dic objectForKey:xc_returnMsg], xc_returnCode:[dic objectForKey:xc_returnCode]}];
@@ -141,9 +146,11 @@
                     }
                     failure(error);
                     NSLog(@"%@-Get请求地址:\n%@---success日志:\n%@",[viewController class],urlStr,error);
-
                     NSDictionary *userInfoDic = error.userInfo;
                     [MBProgressHUD showMessage:userInfoDic[xc_message] toView:viewController.view];
+
+                    //暂时不需要进行跳转处理，因为有的状态是提醒。
+                    // [self performSelector:@selector(turnToHomeClick:) withObject:viewController afterDelay:0.0f];
 
                 }
                 
@@ -173,7 +180,7 @@
             
             if (isLoadToken == YES) {
                 //在设置header头
-                [self.manager.requestSerializer setValue:[UserDefaults() objectForKey:@"userToken"] forHTTPHeaderField:@"Authorization"];
+                [self.manager.requestSerializer setValue:[UserDefaults() objectForKey:K_userToken] forHTTPHeaderField:@"Authorization"];
             }
 
             [self.manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -189,6 +196,11 @@
                     success(responseObject);
                     NSLog(@"%@-Post请求地址:\n%@---success日志:\n%@",[viewController class],urlStr,responseObject);
 
+                }  else if ([[dic objectForKey:xc_returnCode]integerValue] == 1000) {
+                    NSLog(@"%@-Post请求地址:\n%@---登陆过期日志:\n%@",[viewController class],urlStr,responseObject);
+
+                    [self refreshToken:urlStr method:method parameters:parameters token:isLoadToken viewController:viewController success:success failure:failure];
+                    
                 }
                 else {
                     NSError *error;
@@ -203,6 +215,10 @@
 
                     NSDictionary *userInfoDic = error.userInfo;
                     [MBProgressHUD showMessage:userInfoDic[xc_message] toView:viewController.view];
+                   
+                    //暂时不需要进行跳转处理，因为有的状态是提醒。
+                    //[self performSelector:@selector(turnToHomeClick:) withObject:viewController afterDelay:0.0f];
+
                 }
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -307,5 +323,51 @@
     [alertV show];
     
 }
+
+- (void)refreshToken:(NSString *)url method:(NSInteger)method parameters:(NSDictionary *)parameters token:(BOOL)isLoadToken viewController:(UIViewController *)viewController success:(AFNSuccessResponse)success
+             failure:(AFNFailureResponse)failure{
+
+    NSDictionary *postDic = @{@"UserName":[UserDefaults() objectForKey:@"phoneNumber"],@"PassWord":[UserDefaults() objectForKey:@"password"],@"OrgLink":@""};
+
+
+    GGT_Singleton *singleton = [GGT_Singleton sharedSingleton];
+    [[BaseService share] sendPostRequestWithPath:URL_Login parameters:postDic token:NO viewController:nil success:^(id responseObject) {
+        
+        if ([responseObject[@"result"] isEqual:@1]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                singleton.userTokenStr = responseObject[@"data"][@"dicRes"][@"userToken"];
+                singleton.studentNameStr = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"dicRes"][@"studentName"]];
+                
+                [UserDefaults() setObject:responseObject[@"data"][@"dicRes"][@"userToken"] forKey:K_userToken];
+                [UserDefaults() setObject:[NSString stringWithFormat:@"%@",responseObject[@"data"][@"dicRes"][@"studentName"]] forKey:K_studentName];
+                [UserDefaults() synchronize];
+                
+                //重新请求
+                [self requestWithPath:url method:method parameters:parameters token:isLoadToken viewController:viewController success:success failure:failure];
+            });
+          
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
+
+
+#pragma mark token过期，重新登录
+- (void)turnToHomeClick :(UIViewController *)viewController {
+    [MBProgressHUD showMessage:@"登录过期，请重新登录" toView:viewController.view];
+ 
+    [self performSelector:@selector(turnToLoginClick:) withObject:viewController afterDelay:1.0f];
+
+}
+
+- (void)turnToLoginClick :(UIViewController *)viewController{
+    GGT_LoginViewController *loginVc = [[GGT_LoginViewController alloc]init];
+    BaseNavigationController *mainVc = [[BaseNavigationController alloc]initWithRootViewController:loginVc];
+    viewController.view.window.rootViewController = mainVc;
+}
+
 
 @end

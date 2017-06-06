@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import "GGT_LoginViewController.h"
 
 typedef void(^AFNSuccessResponse)(id responseObject);
 typedef void(^AFNFailureResponse)(NSError *error);

@@ -34,6 +34,8 @@ static NSString * const URL_UpdateStudentInfo = @"/api/APP/AppUpdateStudentInfo"
 static NSString * const URL_GetLessonStatistics = @"/api/APP/GetLessonStatistics";
 //获取我的课时
 static NSString * const URL_GetMyClassHour = @"/api/APP/GetMyClassHour";
+//意见反馈接口
+static NSString * const URL_OpinionFeedback = @"/api/APP/OpinionFeedback";
 
 
 
@@ -52,6 +54,9 @@ static NSString * const URL_AppStudentEvaluateTeacher = @"api/APP/AppStudentEval
 
 // 取消约课
 static NSString * const URL_DelLesson = @"api/APP/DelLesson";
+
+// 预约试听课
+static NSString * const URL_AddDemoMsg = @"api/APP/AddDemoMsg";
 
 
 #endif /* GGT_Request_URL_h */

@@ -54,6 +54,12 @@
 // 字体
 #define Font(x) [UIFont systemFontOfSize:x*XMGScaleX]
 
+
+//NSUserDefaults 存储的宏定义
+#define K_userToken @"userToken"
+#define K_studentName @"studentName"
+
+
 /**
  @abstract UIAlterController弹框.
  **/

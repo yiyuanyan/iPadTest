@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GGT_MineClassTableViewCell : UITableViewCell
-
+@property(nonatomic, strong) UILabel *classLeftLabel;
+@property(nonatomic, strong) UILabel *classRightLabel;
 @end
