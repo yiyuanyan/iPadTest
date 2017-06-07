@@ -11,23 +11,17 @@
 @interface GGT_MineClassViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
 //获赠和报名课时
-@property(nonatomic, strong) NSMutableDictionary *result_list;
+@property(nonatomic, strong) NSMutableArray *result_list;
 //剩余&总共课时
-@property(nonatomic, strong) NSMutableDictionary *result_listGoods;
-
-//由于section==2的时候，数据不固定，作为一个临时数据来添加到大数组中
-@property (nonatomic, strong) NSMutableArray *tempContentArray;
-//大的数据源
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@property(nonatomic, strong) NSMutableArray *result_listGoods;
 @end
 
 @implementation GGT_MineClassViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _result_list = [NSMutableDictionary dictionary];
-    _result_listGoods = [NSMutableDictionary dictionary];
-    self.dataArray = [NSMutableArray array];
+    self.result_list = [NSMutableArray array];
+    self.result_listGoods = [NSMutableArray array];
     self.navigationItem.title = @"我的课时";
     self.view.backgroundColor = UICOLOR_FROM_HEX(ColorF2F2F2);
     [self initTableView];
@@ -42,57 +36,10 @@
             NSArray *listGoodsArr = responseObject[@"data"][@"result_listGoods"];
             
             NSArray *listArray = responseObject[@"data"][@"result_list"];
+            [self.result_listGoods addObject:listGoodsArr];
+            [self.result_list addObject:listArray];
             
-//            //如果无数据。展示缺省图，并终止下面的操作
-//            if (IsArrEmpty(listGoodsArr) && IsArrEmpty(listArray)) {
-//                [self.tableView.mj_footer endRefreshing];
-//                [self.tableView.mj_header endRefreshing];
-//                self.dataArray = [NSMutableArray array];
-//                self.mineClassPlaceholderView.hidden = NO;
-//                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-//                [self.tableView reloadData];
-//                return ;
-//            }
-            
-            
-            NSMutableArray *headerArray = [NSMutableArray array];
-            for (NSDictionary *dic in listGoodsArr) {
-                [headerArray addObject:@{@"leftTitle":[NSString stringWithFormat:@"剩余%@课时",dic[@"SurplusCount"]],@"rightTitle":@""}];
-                [headerArray addObject:@{@"leftTitle":[NSString stringWithFormat:@"总共%@课时",dic[@"TotalCount"]],@"rightTitle":[NSString stringWithFormat:@"有效期至:%@",dic[@"ExpireTime"]]}];
-            }
-            
-            
-            
-            NSMutableArray *contentArray = [NSMutableArray array];
-            for (NSDictionary *dic in listArray) {
-                //1 购买课时 2报名课时  3返还课时
-                if ([dic[@"types"] isEqual:@1]) {
-                    [contentArray addObject:@{@"leftTitle":[NSString stringWithFormat:@"获赠%@课时",dic[@"classHour"]],@"rightTitle":dic[@"createTime"]}];
-                    
-                } else if ([dic[@"types"] isEqual:@2]) {
-                    [contentArray addObject:@{@"leftTitle":[NSString stringWithFormat:@"报名%@课时",dic[@"classHour"]],@"rightTitle":dic[@"createTime"]}];
-                    
-                } else if ([dic[@"types"] isEqual:@3]) {
-                    [contentArray addObject:@{@"leftTitle":[NSString stringWithFormat:@"返还%@课时",dic[@"classHour"]],@"rightTitle":dic[@"createTime"]}];
-                }
-            }
-            NSLog(@"%@",contentArray);
-            
-            [self.tableView.mj_footer endRefreshing];
-            [self.tableView.mj_header endRefreshing];
-            
-            [_tempContentArray addObjectsFromArray:contentArray];
-            NSMutableArray *ma = [NSMutableArray array];
-            ma = [NSMutableArray arrayWithObjects:headerArray,_tempContentArray, nil];
-            self.dataArray = ma;
             [self.tableView reloadData];
-            
-            
-            if (contentArray.count < 20 && _tempContentArray.count < 20) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-                [self.tableView reloadData];
-                return ;
-            }
         }else{
             [MBProgressHUD showMessage:responseObject[@"msg"] toView:self.view];
         }
@@ -148,14 +95,29 @@
     if(indexPath.row == 1){
         [self cornCell:cell sideType:UIRectCornerBottomLeft | UIRectCornerBottomRight];
     }
-//    if(indexPath.section == 0){
-//        cell.classLeftLabel.text = _dataArray[0][indexPath.row][@"leftTitle"];
-//        cell.classRightLabel.text = _dataArray[0][indexPath.row][@"rightTitle"];
-//        //cell.textLabel.text = [NSString stringWithFormat:@"%@",self.result_list[@"SurplusCount"]];
-//    }else{
-//        cell.classLeftLabel.text = _dataArray[1][indexPath.row][@"leftTitle"];
-//        cell.classRightLabel.text = _dataArray[1][indexPath.row][@"rightTitle"];
-//    }
+    if(IsArrEmpty(self.result_listGoods)){
+        
+    }else{
+        if(indexPath.section == 0){
+            if(indexPath.row == 0){
+                cell.classLeftLabel.text = [NSString stringWithFormat:@"剩余%@课时",self.result_listGoods[0][0][@"SurplusCount"]];
+            }
+            if(indexPath.row == 1){
+                cell.classLeftLabel.text = [NSString stringWithFormat:@"总共%@课时",self.result_listGoods[0][0][@"TotalCount"]];
+                cell.classRightLabel.text = [NSString stringWithFormat:@"有效期至:%@",self.result_listGoods[0][0][@"ExpireTime"]];
+            }
+            
+        }
+        if(indexPath.section == 1){
+            if(indexPath.row == 0){
+                cell.classLeftLabel.text = [NSString stringWithFormat:@"获赠%@课时",self.result_list[0][0][@"classHour"]];
+                cell.classRightLabel.text = [NSString stringWithFormat:@"%@",self.result_list[0][0][@"createTime"]];
+            }else if(indexPath.row == 1){
+                cell.classLeftLabel.text = [NSString stringWithFormat:@"报名%@课时",self.result_list[0][1][@"classHour"]];
+                cell.classRightLabel.text = [NSString stringWithFormat:@"%@",self.result_list[0][1][@"createTime"]];
+            }
+        }
+    }
     cell.backgroundColor = [UIColor whiteColor];
     //cell.textLabel.text = @"测试测试";
     return cell;
